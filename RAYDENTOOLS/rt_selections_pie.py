@@ -10,8 +10,11 @@ class VIEW3D_MT_PIE_selections(Menu):
         
         pie.operator("view3d.rt_selections_split")
         pie.operator("view3d.rt_selections_merge")
-        pie.operator("view3d.rt_selections_join")
-        pie.operator("view3d.rt_selections_separate")
+        if context.active_object.mode == 'EDIT':
+            pie.operator("view3d.rt_selections_separate")
+        else:
+            pie.operator("view3d.rt_selections_join")
+        pie.operator("view3d.rt_selections_hierarchy")
         pie.operator("view3d.rt_selections_material")
         pie.operator("view3d.rt_selections_linked")
         
